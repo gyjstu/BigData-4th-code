@@ -1,0 +1,2 @@
+run /opt/data_tmp/ /opt/data_tmp/finaltest.txt
+run /opt/data_tmp/ /opt/data_tmp/reco.txt

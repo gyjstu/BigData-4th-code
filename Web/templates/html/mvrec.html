@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>电影推荐系统(大数据专题课程项目)</title>
+    <style type="text/css">
+         /* form {
+            width: 100%;
+            height: 700px;
+            background: #008B8B;
+        }  */
+
+        div {
+            display: inline-block;
+            width: 100%;
+            height: 700px;
+            margin-top: 0px;
+            background: #008B8B;
+        }
+
+        h1 {
+            font-family: "微软雅黑";
+            font-size: 40px;
+            color: black;
+        }
+    </style>
+    <script type="text/javascript">
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串 
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+        function alterUsername(){
+            var Request = new Object();
+            Request = GetRequest();
+            var val = Request["username"];
+            var element = document.getElementById("welcome").innerHTML=
+            "尊敬的用户,"+val;
+            var recoButton = document.getElementById("recoed").value=val;
+            var unrecoButton = document.getElementById("unrecoed").value = val;
+            var scoButton = document.getElementById("sco").value = val;
+        }
+
+    </script>
+</head>
+
+<body onload="alterUsername()">
+    
+        <center>
+            <div>
+                <h2>
+                    <p id=welcome>
+                        
+                    </p>
+                    欢迎使用电影推荐系统
+                </h2>
+                <p>
+                    <form name="mainbody" action="reco.html" method="get">
+                    <button id=recoed name="query" type="submit" value="null">查询已评分电影</button>
+                    </form>
+                </p>
+                <p>
+                    <form name="mainbody2" action="fut.html" method="get">
+                    <button id=unrecoed name="query" type="submit" value="null">电影推荐</button>
+                    </form>
+                </p>
+                <p>
+                    <form name="mainbody3" action="score.html" method="get">
+                    <button id=sco name="query" type="submit" value="null">打分</button>
+                    </form>
+                </p>
+
+            </div>
+        </center>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>电影推荐系统(大数据专题课程项目)</title>
+    <style type="text/css">
+        form {
+            width: 100%;
+            height: 700px;
+            margin-top: 0px;
+            background: #008B8B;
+        }
+
+        div {
+            display: inline-block;
+            padding-right: 20px;
+            padding-top: 80px;
+        }
+
+        h1 {
+            font-family: "微软雅黑";
+            font-size: 40px;
+            color: black;
+        }
+    </style>
+        <script type="text/javascript">
+            function GetRequest() {
+                var url = location.search; //获取url中"?"符后的字串 
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+    
+            function alterUsername(){
+                var Request = new Object();
+                Request = GetRequest();
+                var val = Request["query"];
+                var element = document.getElementById("welcome").innerHTML=
+                "尊敬的用户,"+val;
+                var recoButton = document.getElementById("user").value=val;
+            }
+    
+        </script>
+</head>
+
+<body onload="alterUsername()">
+    <form name="mainbody" action="success.html" method="get">
+        <center>
+            <div>
+                <h2>
+                    <p id=welcome>
+                        
+                    </p>
+                    欢迎使用电影推荐系统
+                </h2>
+                <p>
+                    用户名: <input id=user type="text" name="username" value="null">
+                    <br><br>
+                    电影ID: <input type="text" name="movieid">
+                    <br><br>
+                    评分:&emsp;&ensp;<input type="text" name="grades">
+                </p>
+                <p>
+                    <input id=login type="submit" value="打分">
+                    <br>
+                    <a href="javascript:history.go(-1);">返回</a>
+                </p>
+            </div>
+        </center>
+    </form>
+</body>
+
+</html>
