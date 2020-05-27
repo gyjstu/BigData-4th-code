@@ -507,6 +507,7 @@ services:
       spark:
         aliases: 
           - hadoop-master
+    tty: true
 
 networks:
   spark:
